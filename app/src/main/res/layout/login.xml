@@ -24,7 +24,7 @@
                 android:layout_height="wrap_content"
                 android:text="用户名:"
                 android:textSize="24sp"
-                android:textColor="@color/white" />
+                android:textColor="@color/Violet"/>
 
             <EditText
                 android:id="@+id/username"
@@ -41,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:text="密码:"
                 android:textSize="24sp"
-                android:textColor="@color/white" />
+                android:textColor="@color/Violet" />
 
             <EditText
                 android:id="@+id/password"
@@ -67,7 +67,8 @@
             android:layout_height="wrap_content"
             android:text="记住账户和密码"
             android:textSize="20dp"
-            android:textStyle="bold"/>
+            android:textColor="@color/white"
+            />
     </LinearLayout>
 
     <LinearLayout>
