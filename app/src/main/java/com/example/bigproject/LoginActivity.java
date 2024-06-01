@@ -27,7 +27,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.login_activity);
 
         pref = PreferenceManager.getDefaultSharedPreferences(this);
-        accountEdit = (EditText) findViewById(R.id.username);
+        accountEdit = (EditText) findViewById(R.id.account);
         passwordEdit = (EditText) findViewById(R.id.password);
         rememberPassword = (CheckBox) findViewById(R.id.remember_pass);
         login = (Button) findViewById(R.id.goToMainPage);

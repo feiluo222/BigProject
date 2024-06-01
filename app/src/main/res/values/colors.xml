@@ -2,5 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="Violet">#0033FF</color>
+    <color name="violet">#9999FF</color>
+    <color name="green">#00FF00</color>
+    <color name="lavender">#dcd0ff</color>
 </resources>

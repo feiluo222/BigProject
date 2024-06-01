@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="20dp"
-    android:background="@mipmap/login">
+    android:background="@mipmap/Login_picture">
 
     <TableRow
         android:gravity="center_horizontal">
@@ -13,6 +13,7 @@
             android:src="@mipmap/my_picture"
             android:layout_marginTop="10dp"/>
     </TableRow>
+
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,15 +25,16 @@
                 android:layout_height="wrap_content"
                 android:text="用户名:"
                 android:textSize="24sp"
-                android:textColor="@color/white" />
+                android:textStyle="bold"/>
 
             <EditText
-                android:id="@+id/username"
+                android:id="@+id/account"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="24sp"
-                android:textStyle="bold" />
+                android:textSize="20dp"
+                android:hint="请输入账号"
+                android:textStyle="bold"/>
         </TableRow>
 
         <TableRow>
@@ -41,18 +43,21 @@
                 android:layout_height="wrap_content"
                 android:text="密码:"
                 android:textSize="24sp"
-                android:textColor="@color/white" />
+                android:textColor="@color/black"
+                android:textStyle="bold"/>
 
             <EditText
                 android:id="@+id/password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="24sp"
+                android:textSize="20dp"
                 android:inputType="textPassword"
+                android:hint="请输入密码"
                 android:textStyle="bold"/>
         </TableRow>
     </TableLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -66,8 +71,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="记住账户和密码"
-            android:textSize="20dp"
-            android:textStyle="bold"/>
+            android:textSize="18dp" />
     </LinearLayout>
 
     <LinearLayout>

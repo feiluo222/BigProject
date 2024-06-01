@@ -22,13 +22,30 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".RegisterActivity" android:exported="true">
+            <intent-filter>
+                <action android:name="com.example.activity.ACTION_START" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="com.example.application.MYBIGPROJECT_CATEGORYTOREGISTER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".ForgetPwdActivity" android:exported="true">
+            <intent-filter>
+                <action android:name="com.example.activity.ACTION_START" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="com.example.application.MYBIGPROJECT_CATEGORYTOFORGETPWD" />
+            </intent-filter>
+        </activity>
+
         <activity android:name=".MainPage" android:exported="true">
             <intent-filter>
                 <action android:name="com.example.activity.ACTION_START" />
                 <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="com.example.application.MYBIGPROJECT_CATEGORY" />  <!--指定SecondActivity为隐式启动-->
+                <category android:name="com.example.application.MYBIGPROJECT_CATEGORYTOMAINPAGE" />  <!--指定SecondActivity为隐式启动-->
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>
