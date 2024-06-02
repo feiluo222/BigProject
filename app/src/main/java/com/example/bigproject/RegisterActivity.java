@@ -15,6 +15,8 @@ import androidx.appcompat.app.AppCompatActivity;
 public class RegisterActivity extends AppCompatActivity {
     private Intent goToLogin;
     private EditText account,password,confitm_password,phone;
+    private SQLiteOpenHelper dbHelper;
+    private SQLiteDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,23 +28,23 @@ public class RegisterActivity extends AppCompatActivity {
         confitm_password = (EditText)findViewById(R.id.confirm_password);
         phone = (EditText)findViewById(R.id.phone_num);
 
-
+        dbHelper = new DatabaseHelper(getApplicationContext());
+        db = dbHelper.getReadableDatabase();
     }
 
     public void register(View v){
-        SQLiteOpenHelper dbHelper = new DatabaseHelper(getApplicationContext());
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
-        dbHelper.getWritableDatabase();
         // 获取用户输入的数据
         String accountText = account.getText().toString();
         String passwordText = password.getText().toString();
         String confirmPasswordText = confitm_password.getText().toString();
         String phoneText = phone.getText().toString();
+
         // 检查是否所有字段都已填写
         if (accountText.isEmpty() || passwordText.isEmpty() || confirmPasswordText.isEmpty() || phoneText.isEmpty()) {
             Toast.makeText(this, "所有信息都必须填写", Toast.LENGTH_SHORT).show();
             return;
         }
+
         // 检查密码和确认密码是否一致
         if (!passwordText.equals(confirmPasswordText)) {
             Toast.makeText(this, "密码和确认密码不一致", Toast.LENGTH_SHORT).show();
@@ -56,6 +58,7 @@ public class RegisterActivity extends AppCompatActivity {
             return;
         }
         cursor.close();
+
         // 插入新用户数据
         ContentValues userValues = new ContentValues();
         userValues.put("UserAccount", accountText);
@@ -72,6 +75,13 @@ public class RegisterActivity extends AppCompatActivity {
             startActivity(goToLogin);
             finish();
         }
-        db.close();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (db != null && db.isOpen()) {
+            db.close();
+        }
     }
 }

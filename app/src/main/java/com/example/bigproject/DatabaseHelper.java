@@ -1,5 +1,6 @@
 package com.example.bigproject;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -33,10 +34,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     + "UserAccount TEXT, "
                     + "UserPassword TEXT, "
                     + "UserPhone TEXT);");
+            insertUser(db, "admin", "123456", "1524-9823-8754");
         }
         if (oldVersion < 2) {
             db.execSQL("ALTER TABLE USER ADD COLUMN FAVORITE NUMERIC;");
         }
+    }
+
+    private static void insertUser(SQLiteDatabase db, String account,
+                                    String password, String phone) {
+        ContentValues userValues = new ContentValues();
+        userValues.put("UserAccount", account);
+        userValues.put("UserPassword", password);
+        userValues.put("UserPhone", phone);
+        db.insert("user", null, userValues);
     }
 
 }
