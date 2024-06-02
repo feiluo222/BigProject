@@ -13,7 +13,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
-    private Intent goToMainPage;
+    private Intent goToMainPage,goToRegister,goToForget;
     private SharedPreferences pref;
     private SharedPreferences.Editor editor;
     private EditText accountEdit;
@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v){
                 String account = accountEdit.getText().toString();
                 String password = passwordEdit.getText().toString();
-                //如果账号是admin，密码是123456，就认为登录成功
+                //使用SharedPreferences 设置一个默认账户admin，密码123456
                 if(account.equals("admin") && password.equals("123456")){
                     editor = pref.edit();
                     //检查复选框是否选中
@@ -59,7 +59,7 @@ public class LoginActivity extends AppCompatActivity {
                     editor.apply();
                     //隐式Intent
                     goToMainPage=new Intent("com.example.activity.ACTION_START");
-                    goToMainPage.addCategory("com.example.application.MYBIGPROJECT_CATEGORY");
+                    goToMainPage.addCategory("com.example.application.MYBIGPROJECT_CATEGORYTOMAINPAGE");
                     startActivity(goToMainPage);
                     finish();
                 }else {
@@ -68,5 +68,17 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+    public void RegisterBtn(View v) {
+        goToRegister = new Intent("com.example.activity.ACTION_START");
+        goToRegister.addCategory("com.example.application.MYBIGPROJECT_CATEGORYTOREGISTER");
+        startActivity(goToRegister);
+        finish();
+    }
+    public void ForgetBtn(View v) {
+        goToForget = new Intent("com.example.activity.ACTION_START");
+        goToForget.addCategory("com.example.application.MYBIGPROJECT_CATEGORYTOFORGETPWD");
+        startActivity(goToForget);
+        finish();
     }
 }

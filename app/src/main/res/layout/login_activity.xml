@@ -3,14 +3,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="20dp"
-    android:background="@mipmap/Login_picture">
+    android:background="@drawable/login_picture">
 
     <TableRow
+        android:layout_marginTop="20dp"
         android:gravity="center_horizontal">
         <ImageView
             android:layout_width="140dp"
             android:layout_height="150dp"
-            android:src="@mipmap/my_picture"
+            android:src="@drawable/login_logo"
             android:layout_marginTop="10dp"/>
     </TableRow>
 
@@ -25,16 +26,16 @@
                 android:layout_height="wrap_content"
                 android:text="用户名:"
                 android:textSize="24sp"
-                android:textStyle="bold"/>
+                />
 
             <EditText
                 android:id="@+id/account"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="20dp"
+                android:textSize="24sp"
                 android:hint="请输入账号"
-                android:textStyle="bold"/>
+                android:textStyle="bold"/><!--字体加粗 -->
         </TableRow>
 
         <TableRow>
@@ -43,15 +44,14 @@
                 android:layout_height="wrap_content"
                 android:text="密码:"
                 android:textSize="24sp"
-                android:textColor="@color/black"
-                android:textStyle="bold"/>
+                android:textColor="@color/black" />
 
             <EditText
                 android:id="@+id/password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="20dp"
+                android:textSize="24sp"
                 android:inputType="textPassword"
                 android:hint="请输入密码"
                 android:textStyle="bold"/>
@@ -80,7 +80,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="登录"
-            android:textSize="20sp"
+            android:textSize="25dp"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="140dp" />
     </LinearLayout>
@@ -91,21 +91,23 @@
         android:orientation="horizontal">
         <android.widget.Button
             android:id="@+id/goToForgotPage"
+            android:onClick="ForgetBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="忘记密码"
-            android:textSize="20sp"
+            android:textSize="25dp"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="30dp" />
 
         <android.widget.Button
             android:id="@+id/goToLoginPage"
+            android:onClick="RegisterBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="立即注册"
-            android:textSize="20sp"
+            android:textSize="25dp"
             android:layout_marginTop="20dp"
-            android:layout_marginLeft="100dp" />
+            android:layout_marginLeft="70dp" />
     </LinearLayout>
 
 </TableLayout>
