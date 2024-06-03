@@ -4,10 +4,25 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <ListView
-        android:id="@+id/list_view_game"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-    </ListView>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="280dp"
+        android:scaleType="fitXY"
+        android:adjustViewBounds="true"
+        android:src="@drawable/mainpage_logo" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="未来战/Counter Side"
+        android:gravity="center"
+        android:textSize="25sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="   《未来战》（COUNTER: SIDE）是韩国NEXON 制作，ZlongGames 代理推出的幻想风2D 战略动作RPG，已在Android、iOS 和PC 免费推出。
+                       \n     游戏故事发生在近未来，人类所居的世界被称为Normal Side（现实世界），侵蚀体所居的世界即为Counter Side（异界），两者不时会产生重叠现象，进而发生「侵蚀」。玩家将扮演私人公司「科芬」的老板，带领旗下的「制裁者」对抗侵蚀，守护和平，为了人类的未来而战。
+            \n    游戏内有多达100名以上角色登场，剧情演出更以Live2D 制作，主线剧情多达40万字以上。战斗方式为策略塔防，玩家需将员工编为1艘船舰队与8名成员的小队，思考战略，迎击敌人。员工有「制裁者」「士兵」「装甲部队」3种类型，职业有「护卫」「前锋」「突击」「狙击手」4种，相互克制。"
+        android:textSize="18sp" />
 </LinearLayout>
