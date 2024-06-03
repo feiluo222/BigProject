@@ -18,8 +18,7 @@ public class LoginActivity extends AppCompatActivity {
     private Intent goToMainPage, goToRegister, goToForget;
     private SharedPreferences pref;
     private SharedPreferences.Editor editor;
-    private EditText accountEdit;
-    private EditText passwordEdit;
+    private EditText accountEdit,passwordEdit;
     private Button login;
     private CheckBox rememberPassword;
 
@@ -56,8 +55,11 @@ public class LoginActivity extends AppCompatActivity {
                 String account = accountEdit.getText().toString();
                 String password = passwordEdit.getText().toString();
 
+//                //如果账号是admin，密码是123456，就认为登录成功
+//                if(account.equals("admin") && password.equals("123456"))
+
                 // 查询数据库中是否存在匹配的账户和密码
-                Cursor cursor = db.query("user",
+                Cursor cursor = db.query("users",
                         new String[]{"UserAccount", "UserPassword"},
                         "UserAccount = ? AND UserPassword = ?",
                         new String[]{account, password},

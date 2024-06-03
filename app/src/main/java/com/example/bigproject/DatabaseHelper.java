@@ -30,14 +30,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private void updateMyDatabase(SQLiteDatabase db, int oldVersion, int newVersion) {
         if (oldVersion < 1) {
-            db.execSQL("CREATE TABLE user (UserNo INTEGER PRIMARY KEY AUTOINCREMENT, "
+            db.execSQL("CREATE TABLE users (UserNo INTEGER PRIMARY KEY AUTOINCREMENT, "
                     + "UserAccount TEXT, "
                     + "UserPassword TEXT, "
                     + "UserPhone TEXT);");
             insertUser(db, "admin", "123456", "1524-9823-8754");
         }
         if (oldVersion < 2) {
-            db.execSQL("ALTER TABLE USER ADD COLUMN FAVORITE NUMERIC;");
+            db.execSQL("ALTER TABLE USERS ADD COLUMN FAVORITE NUMERIC;");
         }
     }
 
@@ -47,7 +47,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         userValues.put("UserAccount", account);
         userValues.put("UserPassword", password);
         userValues.put("UserPhone", phone);
-        db.insert("user", null, userValues);
+        db.insert("users", null, userValues);
     }
 
 }

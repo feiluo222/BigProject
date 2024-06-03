@@ -52,7 +52,8 @@ public class RegisterActivity extends AppCompatActivity {
         }
 
         // 查询用户名是否已经存在
-        Cursor cursor = db.query("user", new String[]{"UserAccount"}, "UserAccount = ?", new String[]{accountText}, null, null, null);
+        Cursor cursor = db.query("users", new String[]{"UserAccount"}, "UserAccount = ?",
+                         new String[]{accountText}, null, null, null);
         if (cursor.moveToFirst()) {
             Toast.makeText(this, "用户名已存在", Toast.LENGTH_SHORT).show();
             return;
@@ -65,7 +66,7 @@ public class RegisterActivity extends AppCompatActivity {
         userValues.put("UserPassword", passwordText);
         userValues.put("UserPhone", phoneText);
 
-        long result = db.insert("user", null, userValues);
+        long result = db.insert("users", null, userValues);
 
         if (result == -1) {
             Toast.makeText(this, "注册失败，请重试", Toast.LENGTH_SHORT).show();
