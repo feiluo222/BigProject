@@ -32,7 +32,7 @@
         android:id="@+id/webView"
         android:layout_width="match_parent"
         android:layout_height="350dp"
-       android:visibility="gone" />  <!-- 设置视频不可见-->
+       android:visibility="gone" />  <!-- 确保视频不可见-->
 
     <android.widget.Button
         android:id="@+id/nextPage"

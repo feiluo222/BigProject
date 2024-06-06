@@ -36,6 +36,7 @@ public class MainPage extends AppCompatActivity {
         webSettings.setJavaScriptEnabled(true);
         myWebView.setWebViewClient(new WebViewClient());
         myWebView.loadUrl("https://player.bilibili.com/player.html?isOutside=true&aid=203674910");
+        //myWebView.loadUrl("https://cdnimg.gamekee.com/wiki2.0/video/148/72324/2023/0/4/605692.mp4");
     }
 
     public void goToRoleDescription(View v) {

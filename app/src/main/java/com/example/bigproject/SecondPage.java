@@ -9,8 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.List;
 public class SecondPage extends AppCompatActivity {
-    private GameAdapter gameAdapter;
-    private List<Game> gameList = new ArrayList<>();
+    private RoleAdapter roleAdapter;
+    private List<Role> roleList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,24 +19,24 @@ public class SecondPage extends AppCompatActivity {
         if (actionBar != null) {
             actionBar.hide();
         }
-        initGames();
-        gameAdapter = new GameAdapter(SecondPage.this,
-                R.layout.game_item, gameList);
+        initRoles();
+        roleAdapter = new RoleAdapter(SecondPage.this,
+                R.layout.role_item, roleList);
         ListView listView = (ListView) findViewById(R.id.list_view_game);
-        listView.setAdapter(gameAdapter);
+        listView.setAdapter(roleAdapter);
     }
-    private void initGames() {
-        Game wohn = new Game("魔法使之夜", R.drawable.wohn);
-        gameList.add(wohn);
-        Game witcher = new Game("巫师3 狂猎", R.drawable.witcher);
-        gameList.add(witcher);
-        Game uo = new Game("圣兽之王", R.drawable.uo);
-        gameList.add(uo);
-        Game nikke = new Game("胜利女神：NIKKE", R.drawable.nikke);
-        gameList.add(nikke);
-        Game tdj = new Game("天地劫：幽城再临", R.drawable.tdj);
-        gameList.add(tdj);
-        Game gfr = new Game("碧蓝幻想Relink", R.drawable.gfr);
-        gameList.add(gfr);
+    private void initRoles() {
+        Role kalin = new Role("觉醒：战争女神-卡琳·冯", R.drawable.kalin,"https://player.bilibili.com/player.html?isOutside=true&aid=995356405");
+        roleList.add(kalin);
+        Role qyxd = new Role("觉醒：疫病神之刃-七原千冬", R.drawable.qyxd,"https://player.bilibili.com/player.html?isOutside=true&aid=819446735");
+        roleList.add(qyxd);
+        Role alkxy = new Role("觉醒-寂静的艾丽克西亚", R.drawable.alkxy,"https://player.bilibili.com/player.html?isOutside=true&aid=233871562");
+        roleList.add(alkxy);
+        Role ljn = new Role("觉醒-蕾佳娜", R.drawable.ljn,"https://player.bilibili.com/player.html?isOutside=true&aid=389517074");
+        roleList.add(ljn);
+        Role lfmtn = new Role("加格谢布拉·伊芙·迈特纳", R.drawable.lfmtn,"https://player.bilibili.com/player.html?isOutside=true&aid=365774278");
+        roleList.add(lfmtn);
+        Role lmn = new Role("觉醒-刘米娜", R.drawable.lmn,"https://player.bilibili.com/player.html?isOutside=true&aid=844800719");
+        roleList.add(lmn);
     }
 }
