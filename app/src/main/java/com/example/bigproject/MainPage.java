@@ -21,15 +21,21 @@ public class MainPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_page);
 
+        startService(new Intent(this, SecondMusicService.class));//打开这个页面就播放背景音乐
+
         title = findViewById(R.id.title);
         description = findViewById(R.id.description);
         myWebView = findViewById(R.id.webView);
+
     }
 
     public void main_image(View v) {
         title.setVisibility(View.GONE);  //设置标题不可见
         description.setVisibility(View.GONE);//设置介绍不可见
         myWebView.setVisibility(View.VISIBLE);//设置视频可见
+
+        //点击图片会停止背景音乐
+        stopService(new Intent(MainPage.this, SecondMusicService.class));
 
         // 设置WebView播放外部视频
         WebSettings webSettings = myWebView.getSettings();
@@ -43,6 +49,14 @@ public class MainPage extends AppCompatActivity {
         RoleDescription = new Intent("com.example.activity.ACTION_START");
         RoleDescription.addCategory("com.example.application.MYBIGPROJECT_CATEGORYTOSECONDPAGE");
         startActivity(RoleDescription);
-        finish();
+        finish(); //用于结束当前的Activity并将其从任务堆栈中移除
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (isFinishing()) { // 应用关闭时停止音乐服务
+            stopService(new Intent(MainPage.this, SecondMusicService.class));
+        }
     }
 }

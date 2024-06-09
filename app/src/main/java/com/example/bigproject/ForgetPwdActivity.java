@@ -69,4 +69,12 @@ public class ForgetPwdActivity extends AppCompatActivity {
         cursor.close();
         db.close();
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (db != null && db.isOpen()) {
+            db.close();
+        }
+    }
 }

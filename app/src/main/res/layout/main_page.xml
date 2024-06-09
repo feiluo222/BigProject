@@ -24,8 +24,11 @@
         android:id="@+id/description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:scrollbars="vertical"
+        android:fadeScrollbars="false"
         android:text="   《未来战》（COUNTER: SIDE）是韩国NEXON 制作，ZlongGames 代理推出的幻想风2D 战略动作RPG，已在Android、iOS 和PC 免费推出。
-                       \n     游戏故事发生在近未来，人类所居的世界被称为Normal Side（现实世界），侵蚀体所居的世界即为Counter Side（异界），两者不时会产生重叠现象，进而发生「侵蚀」。玩家将扮演私人公司「科芬」的老板，带领旗下的「制裁者」对抗侵蚀，守护和平，为了人类的未来而战。"
+                       \n     游戏故事发生在近未来，人类所居的世界被称为Normal Side（现实世界），侵蚀体所居的世界即为Counter Side（异界），两者不时会产生重叠现象，进而发生「侵蚀」。玩家将扮演私人公司「科芬」的老板，带领旗下的「制裁者」对抗侵蚀，守护和平，为了人类的未来而战。
+                       \n     侵蚀现象的本质是世界的自保手段，卷入逆卡巴拉系统以后世界就会启动“自救”程序，逆卡巴拉游戏的获胜者将会获得许下一个任何愿望的权利，当然这个被卷入逆卡巴拉系统的倒霉世界连同存在也将被彻底销毁殆尽，因此世界使用“侵蚀”，不断制衡参赛者各方，拖延逆卡巴拉游戏的进度，世界的立场是：不管是人类的世界，还是侵蚀体的世界，该世界都必须存在。"
         android:textSize="18sp" />
 
     <WebView

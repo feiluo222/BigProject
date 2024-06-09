@@ -8,7 +8,7 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@drawable/login_logo"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -55,7 +55,9 @@
                 <category android:name="com.example.application.MYBIGPROJECT_CATEGORYTOSECONDPAGE" />  <!--指定MainPage为隐式启动-->
             </intent-filter>
         </activity>
-
+        <service android:name=".FirstMusicService" />
+<!--        Service 是一个用于在后台执行长时间运行操作的组件，特别适用于需要持续运行的任务，如播放音乐、下载文件、处理网络请求等。-->
+        <service android:name=".SecondMusicService" />
     </application>
 
 </manifest>

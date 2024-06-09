@@ -4,6 +4,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <ImageView
+        android:onClick="main_image"
+        android:layout_width="wrap_content"
+        android:layout_height="280dp"
+        android:scaleType="fitXY"
+        android:adjustViewBounds="true"
+        android:src="@drawable/second_logo" />
+
     <ListView
         android:id="@+id/list_view_game"
         android:layout_width="match_parent"

@@ -30,6 +30,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
 
+        startService(new Intent(this, FirstMusicService.class)); // 播放音乐这个功能问AI的
+
         pref = PreferenceManager.getDefaultSharedPreferences(this);
         accountEdit = findViewById(R.id.account);
         passwordEdit = findViewById(R.id.password);
@@ -55,6 +57,12 @@ public class LoginActivity extends AppCompatActivity {
                 String account = accountEdit.getText().toString();
                 String password = passwordEdit.getText().toString();
 
+                boolean loginSuccess = login(account, password);
+                if (loginSuccess) {
+                    // 停止音乐服务
+                    stopService(new Intent(LoginActivity.this, FirstMusicService.class));
+                }
+
 //                //如果账号是admin，密码是123456，就认为登录成功
 //                if(account.equals("admin") && password.equals("123456"))
 
@@ -75,6 +83,7 @@ public class LoginActivity extends AppCompatActivity {
                         editor.clear();
                     }
                     editor.apply();
+
                     //隐式Intent
                     goToMainPage = new Intent("com.example.activity.ACTION_START");
                     goToMainPage.addCategory("com.example.application.MYBIGPROJECT_CATEGORYTOMAINPAGE");
@@ -93,21 +102,36 @@ public class LoginActivity extends AppCompatActivity {
         goToRegister = new Intent("com.example.activity.ACTION_START");
         goToRegister.addCategory("com.example.application.MYBIGPROJECT_CATEGORYTOREGISTER");
         startActivity(goToRegister);
-        finish();
+        //finish();
     }
 
     public void ForgetBtn(View v) {
         goToForget = new Intent("com.example.activity.ACTION_START");
         goToForget.addCategory("com.example.application.MYBIGPROJECT_CATEGORYTOFORGETPWD");
         startActivity(goToForget);
-        finish();
+        //finish();
+    }
+
+    private boolean login(String account, String password) {
+        // 查询数据库中是否存在匹配的账户和密码
+        Cursor cursor = db.query("users",
+                new String[]{"UserAccount", "UserPassword"},
+                "UserAccount = ? AND UserPassword = ?",
+                new String[]{account, password},
+                null, null, null); // 在这里执行实际的登录逻辑，比如检查用户名和密码
+        boolean loginSuccess = cursor.moveToFirst();
+        cursor.close();
+        return loginSuccess;
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (db != null && db.isOpen()) {
-            db.close();
+        if (db != null && db.isOpen()) { //关闭与数据库的连接
+            db.close(); //确保资源得到正确的释放
+        }
+        if (isFinishing()) { // 应用关闭时停止音乐服务
+            stopService(new Intent(LoginActivity.this, FirstMusicService.class));
         }
     }
 }
