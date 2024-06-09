@@ -46,6 +46,9 @@ public class MainPage extends AppCompatActivity {
     }
 
     public void goToRoleDescription(View v) {
+        //点击角色介绍按钮也关闭音乐
+        stopService(new Intent(MainPage.this, SecondMusicService.class));
+
         RoleDescription = new Intent("com.example.activity.ACTION_START");
         RoleDescription.addCategory("com.example.application.MYBIGPROJECT_CATEGORYTOSECONDPAGE");
         startActivity(RoleDescription);
