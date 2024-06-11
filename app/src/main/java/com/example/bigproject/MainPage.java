@@ -55,6 +55,10 @@ public class MainPage extends AppCompatActivity {
         finish(); //用于结束当前的Activity并将其从任务堆栈中移除
     }
 
+    /*在Activity销毁前调用，这可能发生在Activity结束（调用了它的 finish() 方法）
+      或者因为系统需要临时空间而销毁该Activity实例时。
+      可以用isFinishing()方法来区分这两种情况。  活动与广播 生命周期里        表4.1Android生命周期时间回调函数
+    */
     @Override
     protected void onDestroy() {
         super.onDestroy();

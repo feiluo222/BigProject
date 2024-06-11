@@ -33,8 +33,8 @@ public class RoleAdapter extends ArrayAdapter<Role> {
         roleImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                myWebView.setVisibility(View.VISIBLE);
-                roleName.setVisibility(View.GONE);
+                myWebView.setVisibility(View.VISIBLE);//可见
+                roleName.setVisibility(View.GONE); //不可见
                 // 设置WebView播放外部视频
                 WebSettings webSettings = myWebView.getSettings();
                 webSettings.setJavaScriptEnabled(true);

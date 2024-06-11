@@ -19,7 +19,7 @@ public class LoginActivity extends AppCompatActivity {
     private SharedPreferences pref;
     private SharedPreferences.Editor editor;
     private EditText accountEdit,passwordEdit;
-    private Button login;
+    private Button login,cancel_account;
     private CheckBox rememberPassword;
 
     private SQLiteOpenHelper dbHelper;
@@ -33,10 +33,11 @@ public class LoginActivity extends AppCompatActivity {
         startService(new Intent(this, FirstMusicService.class)); // 播放音乐这个功能问AI的
 
         pref = PreferenceManager.getDefaultSharedPreferences(this);
-        accountEdit = findViewById(R.id.account);
-        passwordEdit = findViewById(R.id.password);
-        rememberPassword = findViewById(R.id.remember_pass);
-        login = findViewById(R.id.goToMainPage);
+        accountEdit = (EditText)findViewById(R.id.account);
+        passwordEdit = (EditText)findViewById(R.id.password);
+        rememberPassword = (CheckBox)findViewById(R.id.remember_pass);
+        login = (Button)findViewById(R.id.goToMainPage);
+        cancel_account = (Button)findViewById(R.id.cancel);
 
         dbHelper = new DatabaseHelper(getApplicationContext());
         db = dbHelper.getReadableDatabase();
@@ -96,13 +97,42 @@ public class LoginActivity extends AppCompatActivity {
                 cursor.close();
             }
         });
+
+        cancel_account.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String account = accountEdit.getText().toString();
+                String password = passwordEdit.getText().toString();
+
+                if (!(account.isEmpty()&&password.isEmpty())) {  //需账户和密码都正确
+                    // 删除数据库中的用户数据
+                    int rowsDeleted = db.delete("users", "UserAccount = ? AND UserPassword = ?",
+                                                new String[]{account,password});
+                    if (rowsDeleted > 0) { //
+                        // 清除SharedPreferences
+                        editor = pref.edit();
+                        editor.clear();
+                        editor.apply();
+
+                        Toast.makeText(LoginActivity.this, "账号已注销", Toast.LENGTH_SHORT).show();
+                        accountEdit.setText("");
+                        passwordEdit.setText("");
+                        rememberPassword.setChecked(false);
+                    } else {
+                        Toast.makeText(LoginActivity.this, "账号或密码不正确", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(LoginActivity.this, "请输入要注销的账号", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
     public void RegisterBtn(View v) {
         goToRegister = new Intent("com.example.activity.ACTION_START");
         goToRegister.addCategory("com.example.application.MYBIGPROJECT_CATEGORYTOREGISTER");
         startActivity(goToRegister);
-        //finish();
+        //finish();   //为了音乐能持续播放
     }
 
     public void ForgetBtn(View v) {
@@ -118,7 +148,7 @@ public class LoginActivity extends AppCompatActivity {
                 new String[]{"UserAccount", "UserPassword"},
                 "UserAccount = ? AND UserPassword = ?",
                 new String[]{account, password},
-                null, null, null); // 在这里执行实际的登录逻辑，比如检查用户名和密码
+                null, null, null); // 检查用户名和密码
         boolean loginSuccess = cursor.moveToFirst();
         cursor.close();
         return loginSuccess;

@@ -13,7 +13,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class ForgetPwdActivity extends AppCompatActivity {
-
+    private Intent goToLogin,goToRegister;
     private EditText account,password,confitm_password,phone;
     private SQLiteOpenHelper dbHelper;
     private SQLiteDatabase db;
@@ -54,13 +54,13 @@ public class ForgetPwdActivity extends AppCompatActivity {
         Cursor cursor = db.query("users", null, "UserAccount=? AND UserPhone=?",
                 new String[]{accountText, phoneText}, null, null, null);
         if (cursor.moveToFirst()) {
-            // 更新密码
+            // 重置密码
             ContentValues values = new ContentValues();
             values.put("UserPassword",passwordText);
             db.update("users", values, "UserAccount=? AND UserPhone=?",
                     new String[]{accountText, phoneText});
             Toast.makeText(this, "密码重置成功", Toast.LENGTH_SHORT).show();
-            Intent goToLogin = new Intent(this, LoginActivity.class);
+            goToLogin = new Intent(this, LoginActivity.class);
             startActivity(goToLogin);
             finish();
         } else {
@@ -68,6 +68,20 @@ public class ForgetPwdActivity extends AppCompatActivity {
         }
         cursor.close();
         db.close();
+    }
+
+    public void register_account(View v) {
+        goToRegister = new Intent("com.example.activity.ACTION_START");
+        goToRegister.addCategory("com.example.application.MYBIGPROJECT_CATEGORYTOREGISTER");
+        startActivity(goToRegister);
+        finish();
+    }
+
+    public void rlogin(View v){
+        //返回登录
+        goToLogin = new Intent(this, LoginActivity.class);
+        startActivity(goToLogin);
+        finish();
     }
 
     @Override

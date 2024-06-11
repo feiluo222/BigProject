@@ -1,6 +1,8 @@
 package com.example.bigproject;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ListView;
 
 import androidx.appcompat.app.ActionBar;
@@ -9,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.List;
 public class SecondPage extends AppCompatActivity {
+    private Intent goToLogin;
     private RoleAdapter roleAdapter;
     private List<Role> roleList = new ArrayList<>();
     @Override
@@ -38,5 +41,12 @@ public class SecondPage extends AppCompatActivity {
         roleList.add(lfmtn);
         Role lmn = new Role("觉醒-刘米娜", R.drawable.lmn,"https://player.bilibili.com/player.html?isOutside=true&aid=844800719");
         roleList.add(lmn);
+    }
+
+    public void return_login(View v){
+        //返回登录
+        goToLogin = new Intent(this, LoginActivity.class);
+        startActivity(goToLogin);
+        finish();
     }
 }

@@ -13,7 +13,7 @@ import android.database.Cursor;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class RegisterActivity extends AppCompatActivity {
-    private Intent goToLogin;
+    private Intent goToLogin,goToForget;
     private EditText account,password,confitm_password,phone;
     private SQLiteOpenHelper dbHelper;
     private SQLiteDatabase db;
@@ -76,6 +76,20 @@ public class RegisterActivity extends AppCompatActivity {
             startActivity(goToLogin);
             finish();
         }
+    }
+
+    public void forget_pwd(View v) {
+        goToForget = new Intent("com.example.activity.ACTION_START");
+        goToForget.addCategory("com.example.application.MYBIGPROJECT_CATEGORYTOFORGETPWD");
+        startActivity(goToForget);
+        finish();
+    }
+
+    public void rlogin(View v){
+        //返回登录
+        goToLogin = new Intent(this, LoginActivity.class);
+        startActivity(goToLogin);
+        finish();
     }
 
     @Override

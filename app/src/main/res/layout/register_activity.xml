@@ -98,4 +98,18 @@
         android:text="注册"
         android:textSize="25dp"
         android:layout_marginTop="25dp"/>
+
+    <android.widget.Button
+        android:onClick="forget_pwd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="忘记密码"
+        android:textSize="25dp" />
+
+    <android.widget.Button
+        android:onClick="rlogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="登录"
+        android:textSize="25dp" />
 </TableLayout>
